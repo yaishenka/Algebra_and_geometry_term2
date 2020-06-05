@@ -1,0 +1,20 @@
+language: python
+
+install:
+  - git checkout $TRAVIS_BRANCH
+  - echo $TRAVIS_COMMIT_MESSAGE
+  - mkdir -p src
+  - mkdir -p compiled
+  - pip install -r requirements.txt
+
+script:
+  - python3 pdfcreator.py
+
+after_success:
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git remote add origin-master https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} > /dev/null 2>&1
+  - git add -A
+  - git commit --message "Travis build - $TRAVIS_BUILD_NUMBER"
+  - git push origin-master
+  
