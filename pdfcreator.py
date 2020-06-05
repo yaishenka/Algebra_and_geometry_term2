@@ -22,6 +22,7 @@ def merge_pdfs():
 
 
 def compile_files():
+    file_list = os.listdir(sources_dir)
     for task_number in file_list:
         if 'DS_Store' in task_number: # Костыль
             continue
