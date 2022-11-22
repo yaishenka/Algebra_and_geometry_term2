@@ -1,2 +1,2 @@
 PyPDF2==1.26.0
-pillow==8.1.1
+pillow==9.3.0
